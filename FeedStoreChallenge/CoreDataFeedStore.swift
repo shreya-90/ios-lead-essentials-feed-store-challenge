@@ -28,7 +28,7 @@ public final class CoreDataFeedStore: FeedStore {
 		context = container.newBackgroundContext()
 	}
     
-    private let queue = DispatchQueue(label: "\(CoreDataFeedStore.self)Queue", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "\(CoreDataFeedStore.self)Queue", qos: .userInitiated, attributes: .concurrent)
 
 	public func retrieve(completion: @escaping RetrievalCompletion) {
         queue.async { [unowned self] in
@@ -47,7 +47,7 @@ public final class CoreDataFeedStore: FeedStore {
 	}
 
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        queue.async { [unowned self] in
+        queue.async(flags: .barrier) { [unowned self] in
             self.perform { context in
                     do {
                             let managedCache = try ManagedCache.newUniqueInstance(in: context)
@@ -63,7 +63,7 @@ public final class CoreDataFeedStore: FeedStore {
 	}
 
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-        queue.async { [unowned self] in
+        queue.async(flags: .barrier) { [unowned self] in
             self.perform { context in
                 do {
                     try ManagedCache.find(in: context).map(context.delete).map(context.save)
