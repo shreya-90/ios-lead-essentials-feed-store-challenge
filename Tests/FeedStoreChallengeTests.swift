@@ -119,9 +119,11 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 extension FeedStoreChallengeTests: FailableRetrieveFeedStoreSpecs {
 
 	func test_retrieve_deliversFailureOnRetrievalError() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveDeliversFailureOnRetrievalError(on: sut)
+        let stub = NSManagedObjectContext.alwaysFailingFetchStub()
+        let sut = makeSUT()
+        
+        stub.startIntercepting()
+        assertThatRetrieveDeliversFailureOnRetrievalError(on: sut)
 	}
 
 	func test_retrieve_hasNoSideEffectsOnFailure() {
