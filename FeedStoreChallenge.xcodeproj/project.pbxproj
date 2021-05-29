@@ -23,6 +23,8 @@
 		35A2041F2660F60A0060E319 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35A2041D2660F60A0060E319 /* FeedStore.xcdatamodeld */; };
 		35A204222660F95E0060E319 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A204212660F95E0060E319 /* ManagedCache.swift */; };
 		35A204242660F9800060E319 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A204232660F9800060E319 /* ManagedFeedImage.swift */; };
+		35A2042626622BEE0060E319 /* NSManagedObjectContext+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A2042526622BEE0060E319 /* NSManagedObjectContext+Stub.swift */; };
+		35A20428266231350060E319 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A20427266231350060E319 /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		35A2041E2660F60A0060E319 /* FeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStore.xcdatamodel; sourceTree = "<group>"; };
 		35A204212660F95E0060E319 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
 		35A204232660F9800060E319 /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
+		35A2042526622BEE0060E319 /* NSManagedObjectContext+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Stub.swift"; sourceTree = "<group>"; };
+		35A20427266231350060E319 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 		08CE2B982285BBD100183A1B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				35A2042526622BEE0060E319 /* NSManagedObjectContext+Stub.swift */,
+				35A20427266231350060E319 /* SharedTestHelpers.swift */,
 				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
 				08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */,
 				084BB13B24FE50A10091C705 /* FeedStoreIntegrationTests.swift */,
@@ -275,9 +281,11 @@
 			files = (
 				08CE2BB22285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
 				08CE2BB02285BCE700183A1B /* FeedStoreSpecs.swift in Sources */,
+				35A20428266231350060E319 /* SharedTestHelpers.swift in Sources */,
 				084BB13C24FE50A10091C705 /* FeedStoreIntegrationTests.swift in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
+				35A2042626622BEE0060E319 /* NSManagedObjectContext+Stub.swift in Sources */,
 				08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 				084BB13E24FE56830091C705 /* XCTestCase+FeedStoreHelpers.swift in Sources */,
 				08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */,
