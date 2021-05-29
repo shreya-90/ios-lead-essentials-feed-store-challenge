@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import XCTest
 
 func anyNSError() -> NSError {
     return NSError(domain: "any Error", code: 0)
@@ -14,4 +15,12 @@ func anyNSError() -> NSError {
 
 func anyURL() -> URL {
     return  URL(string: "http://any-url.com")!
+}
+
+extension XCTestCase {
+        func checkForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance,"Instance should have been deallocated. Potential memory leak.",file: file, line: line)
+        }
+    }
 }
