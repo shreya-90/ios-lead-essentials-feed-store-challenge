@@ -161,9 +161,15 @@ extension FeedStoreChallengeTests: FailableInsertFeedStoreSpecs {
 extension FeedStoreChallengeTests: FailableDeleteFeedStoreSpecs {
 
 	func test_delete_deliversErrorOnDeletionError() {
-//		let sut = makeSUT()
-//
-//		assertThatDeleteDeliversErrorOnDeletionError(on: sut)
+		let stub = NSManagedObjectContext.alwaysFailingSaveStub()
+        let feed = uniqueImageFeed()
+        let timestamp = Date()
+        let sut = makeSUT()
+        
+        insert((feed,timestamp), to: sut)
+        stub.startIntercepting()
+        
+		assertThatDeleteDeliversErrorOnDeletionError(on: sut)
 	}
 
 	func test_delete_hasNoSideEffectsOnDeletionError() {
