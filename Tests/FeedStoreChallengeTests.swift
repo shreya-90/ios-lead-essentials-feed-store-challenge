@@ -127,9 +127,11 @@ extension FeedStoreChallengeTests: FailableRetrieveFeedStoreSpecs {
 	}
 
 	func test_retrieve_hasNoSideEffectsOnFailure() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveHasNoSideEffectsOnFailure(on: sut)
+        let stub = NSManagedObjectContext.alwaysFailingFetchStub()
+        let sut = makeSUT()
+        
+        stub.startIntercepting()
+		assertThatRetrieveHasNoSideEffectsOnFailure(on: sut)
 	}
 
 }
