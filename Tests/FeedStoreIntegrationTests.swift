@@ -76,18 +76,29 @@ class FeedStoreIntegrationTests: XCTestCase {
     // - MARK: Helpers
     
     private func makeSUT() -> FeedStore {
-        let storeURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
+        let storeURL = testSpecificStoreURL()
         let sut = try! CoreDataFeedStore(storeURL: storeURL)
         checkForMemoryLeaks(sut)
         return sut
     }
     
     private func setupEmptyStoreState() {
-
+        deleteStoreArtifacts()
     }
 
     private func undoStoreSideEffects() {
-
+        deleteStoreArtifacts()
     }
     
+    private func testSpecificStoreURL() -> URL {
+        return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
+    }
+    
+    private func cachesDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+    
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+    }
 }
