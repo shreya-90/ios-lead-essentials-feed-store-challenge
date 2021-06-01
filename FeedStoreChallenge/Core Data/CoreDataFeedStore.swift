@@ -41,7 +41,7 @@ public final class CoreDataFeedStore: FeedStore {
                         completion(.failure(error))
                     }
             }
-    }
+    
 	}
 
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
