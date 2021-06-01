@@ -30,19 +30,18 @@ public final class CoreDataFeedStore: FeedStore {
     
 
 	public func retrieve(completion: @escaping RetrievalCompletion) {
-        queue.async { [unowned self] in
-            self.perform { context in
-                    do {
-                            if let cache = try ManagedCache.find(in: context) {
-                                completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
-                            } else {
-                               completion(.empty)
-                            }
-                        } catch {
-                            completion(.failure(error))
+        perform { context in
+                do {
+                        if let cache = try ManagedCache.find(in: context) {
+                            completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
+                        } else {
+                           completion(.empty)
                         }
-                }
-        }
+                    } catch {
+                        completion(.failure(error))
+                    }
+            }
+    }
 	}
 
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
