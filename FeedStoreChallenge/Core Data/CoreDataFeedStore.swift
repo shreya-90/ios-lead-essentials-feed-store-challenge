@@ -28,7 +28,6 @@ public final class CoreDataFeedStore: FeedStore {
 		context = container.newBackgroundContext()
 	}
     
-    private let queue = DispatchQueue(label: "\(CoreDataFeedStore.self)Queue", qos: .userInitiated, attributes: .concurrent)
 
 	public func retrieve(completion: @escaping RetrievalCompletion) {
         queue.async { [unowned self] in
